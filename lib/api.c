@@ -140,6 +140,7 @@ static int request_table_ver_and_size(ryzen_access ry)
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		get_table_ver_msg = 0x6;
 		break;
 	default:
@@ -210,6 +211,7 @@ static int request_table_addr(ryzen_access ry)
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		get_table_addr_msg = 0x66;
 		break;
 	default:
@@ -225,6 +227,7 @@ static int request_table_addr(ryzen_access ry)
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		ry->table_addr = (uint64_t) args.arg1 << 32 | args.arg0;
 		break;
 	default:
@@ -261,6 +264,7 @@ static int request_transfer_table(ryzen_access ry)
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		transfer_table_msg = 0x65;
 		break;
 	default:
@@ -452,6 +456,7 @@ EXP int CALL set_stapm_limit(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x14);
         if (err) {
             printf("%s: Retry with PSMU\n", __func__);
@@ -483,6 +488,7 @@ EXP int CALL set_fast_limit(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x15);
 	default:
 		break;
@@ -511,6 +517,7 @@ EXP int CALL set_slow_limit(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x16);
 	default:
 		break;
@@ -539,6 +546,7 @@ EXP int CALL set_slow_time(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x17);
 	default:
 		break;
@@ -567,6 +575,7 @@ EXP int CALL set_stapm_time(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x18);
 	default:
 		break;
@@ -595,6 +604,7 @@ EXP int CALL set_tctl_temp(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x19);
 	default:
 		break;
@@ -623,6 +633,7 @@ EXP int CALL set_vrm_current(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x1a);
 	default:
 		break;
@@ -651,6 +662,7 @@ EXP int CALL set_vrmsoc_current(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x1b);
 	default:
 		break;
@@ -704,6 +716,7 @@ EXP int CALL set_vrmmax_current(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x1c);
 		break;
 	case FAM_VANGOGH:
@@ -747,6 +760,7 @@ EXP int CALL set_vrmsocmax_current(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x1d);
 	default:
 		break;
@@ -1007,6 +1021,7 @@ EXP int CALL set_prochot_deassertion_ramp(ryzen_access ry, uint32_t value) {
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x1f);
 	default:
 		break;
@@ -1059,6 +1074,7 @@ EXP int CALL set_dgpu_skin_temp_limit(ryzen_access ry, uint32_t value) {
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x34);
 		break;
 	default:
@@ -1083,6 +1099,7 @@ EXP int CALL set_apu_slow_limit(ryzen_access ry, uint32_t value) {
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x23);
 		break;
 	default:
@@ -1109,6 +1126,7 @@ EXP int CALL set_skin_temp_power_limit(ryzen_access ry, uint32_t value) {
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x4a);
 		break;
 	default:
@@ -1160,6 +1178,7 @@ EXP int CALL set_power_saving(ryzen_access ry) {
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x12);
 		break;
 	default:
@@ -1190,6 +1209,7 @@ EXP int CALL set_max_performance(ryzen_access ry) {
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x11);
 		break;
 	default:
