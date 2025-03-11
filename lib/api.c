@@ -1338,6 +1338,7 @@ EXP int CALL set_coall(ryzen_access ry, uint32_t value) {
 	case FAM_VANGOGH:
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
+	case FAM_STRIXHALO:
 		_do_adjust(0x4C);
 		break;
 	default:
@@ -1382,6 +1383,7 @@ EXP int CALL set_cogfx(ryzen_access ry, uint32_t value) {
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_VANGOGH:
+	case FAM_STRIXHALO:	
 		_do_adjust_psmu(0xB7);
 		break;
 	default:
@@ -1723,6 +1725,7 @@ EXP float CALL get_tctl_temp(ryzen_access ry) {
 	case 0x001E0005:
 	case 0x001E000A:
 	case 0x001E0101:
+	case 0x0064020c:	
 		_read_float_value(0x58); //use core1 because core0 is not reported on dual core cpus
 	case 0x00370000:
 	case 0x00370001:
@@ -1757,6 +1760,7 @@ EXP float CALL get_tctl_temp_value(ryzen_access ry) {
 	case 0x001E0005:
 	case 0x001E000A:
 	case 0x001E0101:
+	case 0x0064020c:
 		_read_float_value(0x5C); //use core1 because core0 is not reported on dual core cpus
 	case 0x00370000:
 	case 0x00370001:
@@ -1801,6 +1805,7 @@ EXP float CALL get_apu_skin_temp_limit(ryzen_access ry) {
 	case 0x004C0006:
 	case 0x004C0007:
 	case 0x004C0008:
+	case 0x0064020c:
 		_read_float_value(0x58);
 	default:
 		break;
@@ -1827,6 +1832,7 @@ EXP float CALL get_apu_skin_temp_value(ryzen_access ry) {
 	case 0x004C0006:
 	case 0x004C0007:
 	case 0x004C0008:
+	case 0x0064020c:
 		_read_float_value(0x5C);
 	default:
 		break;
@@ -1852,6 +1858,7 @@ EXP float CALL get_dgpu_skin_temp_limit(ryzen_access ry) {
 	case 0x004C0006:
 	case 0x004C0007:
 	case 0x004C0008:
+	case 0x0064020c:	
 		_read_float_value(0x60);
 	default:
 		break;
@@ -1877,6 +1884,7 @@ EXP float CALL get_dgpu_skin_temp_value(ryzen_access ry) {
 	case 0x004C0006:
 	case 0x004C0007:
 	case 0x004C0008:
+	case 0x0064020c:	
 		_read_float_value(0x64);
 	default:
 		break;
