@@ -457,12 +457,15 @@ EXP int CALL set_stapm_limit(ryzen_access ry, uint32_t value){
 	case FAM_PHOENIX:
 	case FAM_HAWKPOINT:
 	case FAM_STRIXPOINT:
-	case FAM_STRIXHALO:
 		_do_adjust(0x14);
         if (err) {
             printf("%s: Retry with PSMU\n", __func__);
 		    _do_adjust_psmu(0x31);
         }
+	case FAM_STRIXHALO:
+		// Note: do_adjust(0x14) seems to be a noop for this arch.  And instead set_fast_limit seems to change _both_ 
+		// stapm and fast limits.  So we should return an error for this operation.
+		break; 		
 	default:
 		break;
 	}
